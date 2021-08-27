@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ user.username }}{% endblock title %}
+
+{% block content %}
+<div class="container">
+
+    <div class="page-header header-filter" data-parallax="true"
+        style="background-image:url('http://wallpapere.org/wp-content/uploads/2012/02/black-and-white-city-night.png');">
+    </div>
+    <div class="main main-raised">
+        <div class="profile-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 ml-auto mr-auto">
+                        <div class="profile">
+                            <div class="avatar">
+                                <img src="{{ profile.profile_picture.url }}" alt="Circle Image"
+                                    class="img-raised rounded-circle img-fluid">
+                            </div>
+                            <div class="name">
+                                <h3 class="title">{{ user.username }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="description text-center">
+                    <p>{{profile.bio}}</p>
+                </div>
+
+                {% for post in posts %}
+                <div class="card" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ post.images.first.image.url }}" alt="Card image cap">
+                    <div class="card-body">
+                        {{ post.content|slice:'10' }}..
+                        <br>
+                        likes: {{ post.likes.count }}
+                    </div>
+                </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

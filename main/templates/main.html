@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/post_styles.css' %}">
+
+
+{% endblock %}
+{% block content %}
+
+{% include "snippets/navbar.html" %}
+
+<div class="container container-small">
+    {% for post in posts %}
+    {% include "snippets/post.html" with post=post %}
+    <br>
+    {% endfor %}
+
+
+
+    {% endblock %}
