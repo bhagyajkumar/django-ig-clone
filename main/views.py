@@ -13,7 +13,6 @@ def home_page(request):
     return render(request, "main.html", {'posts': posts, 'like_data': like_data})
 
 
-@csrf_exempt
 def ajax_like(request):
     if request.is_ajax():
         post_id = request.POST["post_id"]
